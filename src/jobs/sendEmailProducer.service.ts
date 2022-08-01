@@ -8,7 +8,9 @@ class SendEmailProducerServicer {
   constructor(@InjectQueue('sendMail-queue') private queue: Queue) {}
 
   async sendMail(createUserDto: CreateUserDto) {
-    await this.queue.add('sendMail-job', createUserDto);
+    await this.queue.add('sendMail-job', createUserDto, {
+      delay: 1000,
+    });
   }
 }
 
