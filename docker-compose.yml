@@ -1,14 +1,9 @@
-version: "3.8"
+
+version: '3'
 
 services:
-  mysql_container:
-    image: redis:6.2-alpine
-    container_name: mysql_container
-    environment:
-      - MYSQL_ROOT_PASSWORD=1234
+  redis:
+    image: redis
+    command: redis-server --requirepass Redis2019!
     ports:
-    - 3306:3306
-    volumes:
-    - databases_volume:/var/lib/mysql
-volumes:
-  databases_volume:
+      - "6379:6379"
